@@ -1,0 +1,7 @@
+INSERT INTO Loans (BorrowerID, BookID, BranchID, LoanDate, DueDate)
+VALUES (1, 1, 1, CURDATE(), DATE_ADD(CURDATE(), INTERVAL 14 DAY));
+
+-- Update book availability
+UPDATE Books
+SET Available = FALSE
+WHERE BookID = 1;
