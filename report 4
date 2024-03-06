@@ -1,0 +1,6 @@
+SELECT p.Name, SUM(od.Quantity) AS TotalQuantitySold
+FROM Products p
+JOIN OrderDetails od ON p.ProductID = od.ProductID
+GROUP BY p.ProductID
+ORDER BY TotalQuantitySold DESC
+LIMIT 5;
