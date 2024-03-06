@@ -1,6 +1,4 @@
-SELECT p.Name, SUM(od.Quantity) AS TotalQuantitySold
-FROM Products p
-JOIN OrderDetails od ON p.ProductID = od.ProductID
-GROUP BY p.ProductID
-ORDER BY TotalQuantitySold DESC
-LIMIT 5;
+SELECT b.Title, b.Author, l.DueDate
+FROM Books b
+JOIN Loans l ON b.BookID = l.BookID
+WHERE l.DueDate < CURDATE() AND l.ReturnDate IS NULL;
