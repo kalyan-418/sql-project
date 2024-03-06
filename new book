@@ -1,0 +1,2 @@
+INSERT INTO Books (ISBN, Title, Author, Genre, Available)
+VALUES ('978-1-56619-909-4', 'To Kill a Mockingbird', 'Harper Lee', 'Fiction', TRUE);
