@@ -1,36 +1,35 @@
-CREATE TABLE Products (
-    ProductID INT AUTO_INCREMENT PRIMARY KEY,
-    Name VARCHAR(255),
-    Description TEXT,
-    Price DECIMAL(10, 2),
-    Category VARCHAR(50),
-    InventoryQuantity INT
+CREATE TABLE Books (
+    BookID INT AUTO_INCREMENT PRIMARY KEY,
+    ISBN VARCHAR(20),
+    Title VARCHAR(255),
+    Author VARCHAR(100),
+    Genre VARCHAR(50),
+    Available BOOLEAN
 );
 
-CREATE TABLE Customers (
-    CustomerID INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE Borrowers (
+    BorrowerID INT AUTO_INCREMENT PRIMARY KEY,
     Name VARCHAR(100),
     Email VARCHAR(255),
+    Phone VARCHAR(20)
+);
+
+CREATE TABLE Loans (
+    LoanID INT AUTO_INCREMENT PRIMARY KEY,
+    BorrowerID INT,
+    BookID INT,
+    BranchID INT,
+    LoanDate DATE,
+    DueDate DATE,
+    ReturnDate DATE,
+    FOREIGN KEY (BorrowerID) REFERENCES Borrowers(BorrowerID),
+    FOREIGN KEY (BookID) REFERENCES Books(BookID),
+    FOREIGN KEY (BranchID) REFERENCES LibraryBranches(BranchID)
+);
+
+CREATE TABLE LibraryBranches (
+    BranchID INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(100),
     Address VARCHAR(255),
-    ContactNumber VARCHAR(20)
-);
-
-CREATE TABLE Orders (
-    OrderID INT AUTO_INCREMENT PRIMARY KEY,
-    CustomerID INT,
-    OrderDate DATETIME,
-    OrderStatus ENUM('Pending', 'Shipped', 'Delivered', 'Cancelled'),
-    TotalAmount DECIMAL(10, 2),
-    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
-);
-
-CREATE TABLE OrderDetails (
-    OrderDetailID INT AUTO_INCREMENT PRIMARY KEY,
-    OrderID INT,
-    ProductID INT,
-    Quantity INT,
-    UnitPrice DECIMAL(10, 2),
-    Subtotal DECIMAL(10, 2),
-    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
-    FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
+    Phone VARCHAR(20)
 );
