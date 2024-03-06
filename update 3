@@ -1,3 +1,0 @@
-UPDATE Products
-SET InventoryQuantity = InventoryQuantity - (SELECT Quantity FROM OrderDetails WHERE OrderID = 1)
-WHERE ProductID IN (SELECT ProductID FROM OrderDetails WHERE OrderID = 1);

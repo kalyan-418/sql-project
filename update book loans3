@@ -1,0 +1,8 @@
+UPDATE Loans
+SET ReturnDate = CURDATE()
+WHERE LoanID = 1;
+
+-- Update book availability
+UPDATE Books
+SET Available = TRUE
+WHERE BookID = 1;
