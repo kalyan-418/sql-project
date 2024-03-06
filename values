@@ -1,0 +1,4 @@
+INSERT INTO Products (Name, Description, Price, Category, InventoryQuantity) 
+VALUES ('Product 1', 'Description of Product 1', 10.99, 'Category A', 100),
+       ('Product 2', 'Description of Product 2', 20.49, 'Category B', 50),
+       ('Product 3', 'Description of Product 3', 15.75, 'Category A', 75);
